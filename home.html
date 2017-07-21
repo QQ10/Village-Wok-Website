@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+     <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <title>Village Wok</title>
+
+
+      <style type="text/css">
+
+
+          #jumbotron{
+
+              background-image: url(villagewokimages/banner.jpeg);
+              height: 460px;
+              background-repeat: no-repeat;
+              background-size: cover;
+              background-position:left;
+              box-shadow: inset 0 0 0 1000px rgba(0,0,0,.4);
+
+          }
+
+          #banner{
+
+              text-align: center;
+              color: white;
+              font-family:inherit;
+              margin-top: 65px;
+
+          }
+
+
+          #menu{
+
+              text-align: center;
+
+          }
+
+          #about{
+
+              text-align: center;
+              margin-bottom: 70px;
+
+          }
+
+          #contact{
+
+              text-align: center;
+              background-color: #F6F6F6;
+
+          }
+
+          .card{
+
+              margin-top: 110px;
+              margin-bottom: 110px;
+              border: none;
+
+          }
+
+          .card-text{
+
+              color: gray;
+
+          }
+
+          .card-title{
+              margin-top: 8px;
+              margin-bottom: 25px;
+
+          }
+
+          #contactform .btn:hover {
+            background: rgba(9,8,77,0.7);
+            }
+
+          #map-canvas {
+              width: 100%;
+              height: 400px;
+              border: 1px solid lightgray;
+            }
+
+          .card-img-top {
+
+              width:230px;
+              height: 230px;
+              border-radius: 50%;
+              margin:auto;
+              margin-top: 20px;
+
+          }
+
+          .card-img-top:hover {
+
+            filter: brightness(110%);
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3), 0 6px 20px 0 rgba(0,0,0,0.20);
+            transition-duration: 0.3s;
+
+          }
+
+          .card-footer{
+
+              margin-top: 1px;
+          }
+
+          .card2and4row{
+
+              background-color: #F6F6F6;
+
+          }
+
+          #myBtn {
+
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed/sticky position */
+            bottom: 20px; /* Place the button at the bottom of the page */
+            right: 15px; /* Place the button 30px from the right */
+            z-index: 99; /* Make sure it does not overlap */
+            border: none; /* Remove borders */
+            outline: none; /* Remove outline */
+            background-color: gray; /* Set a background color */
+            color: white; /* Text color */
+            cursor: pointer; /* Add a mouse pointer on hover */
+            padding: 10px; /* Some padding */
+            border-radius: 10px; /* Rounded corners */
+
+        }
+
+      	 #myBtn:hover {
+
+            background-color: #555; /* Add a dark-grey background on hover */
+
+       }
+
+	@keyframes wiggle {
+
+                0% { transform: rotate(0deg); }
+               80% { transform: rotate(0deg); }
+               85% { transform: rotate(5deg); }
+               95% { transform: rotate(-5deg); }
+              100% { transform: rotate(0deg); }
+
+            }
+
+
+        h1.wiggle:hover {
+
+            animation: wiggle 1s infinite;
+
+        }
+
+
+
+        #bannertexttwo:hover {
+
+            animation: wiggle 1s infinite;
+
+        }
+
+
+        #bannertextthree:hover {
+
+            animation: wiggle 1s infinite;
+
+        }
+
+        #facebook{
+
+              margin-right: 7px;
+              position: relative;
+
+          }
+
+        #facebook:hover{
+
+              top: 5px;
+
+          }
+
+        #instagram{
+
+              margin-right: 7px;
+              position: relative;
+
+          }
+
+        #instagram:hover{
+
+              top: 5px;
+
+          }
+
+        #twitter{
+
+             margin-right: 7px;
+             position: relative;
+
+          }
+
+         #twitter:hover{
+
+              top: 5px;
+
+          }
+
+         #pintertest {
+
+             margin-right: 7px;
+             position: relative;
+
+          }
+
+         #pintertest:hover{
+
+              top: 5px;
+
+          }
+
+         body {
+            margin: 0;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .overlay {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0, 0.9);
+            overflow-x: hidden;
+            transition: 0.5s;
+        }
+
+        .overlay-content {
+            position: relative;
+            top: 12%;
+            width: 100%;
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 35px;
+        }
+
+        .overlay a {
+            padding: 8px;
+            text-decoration: none;
+            font-size: 22px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .overlay a:hover, .overlay a:focus {
+            color: #f1f1f1;
+        }
+
+        .overlay .closebtn {
+            position: absolute;
+            top: 40px;
+            right: 25px;
+            font-size: 50px;
+        }
+
+        @media screen and (max-height: 450px) {
+          .overlay a {font-size: 20px}
+          .overlay .closebtn {
+            font-size: 40px;
+            top: 15px;
+            right: 35px;
+          }
+        }
+
+        #villageBar{
+
+         color: white;
+         height: 40px;
+         padding-top: 7px;
+         font-size: 19px;
+         cursor:pointer;
+
+        }
+
+
+
+      </style>
+
+
+
+
+
+  </head>
+
+  <body>
+
+      <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+      <!--
+      <nav class="navbar navbar-toggleable-md navbar navbar-inverse bg-inverse fixed-top">
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a class="navbar-brand" href="./home.html">Village Wok</a>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+            <ul class="navbar-nav" id=navbarmenu>
+              <li class="nav-item active">
+                <a class="nav-link active" href="./home.html">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./lunchspecial.html">Lunch Specials</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./appetizers.html">Appetizers</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  More
+                </a>
+                <div class="dropdown-menu bg-inverse" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item bg-inverse" href="./specialcombination.html" style="color:gray;">Special Combination</a>
+                  <a class="dropdown-item bg-inverse" href="./chefspecialties.html" style="color:gray;">Chef's Specialties</a>
+                  <a class="dropdown-item bg-inverse" href="./authenticchinese.html" style="color:gray;">Authentic Chinese</a>
+                  <a class="dropdown-item bg-inverse" href="./meatlovers.html" style="color:gray;">Meat Lovers</a>
+                  <a class="dropdown-item bg-inverse" href="./healthdiet.html" style="color:gray;">Vegetarian and Health Diet</a>
+                  <a class="dropdown-item bg-inverse" href="./riceandnoodles.html" style="color:gray;">Rice and Noodles</a>
+                  <a class="dropdown-item bg-inverse" href="./mooshi.html" style="color:gray;">Moo Shi</a>
+                  <a class="dropdown-item bg-inverse" href="./seafood.html" style="color:gray;">Seafood</a>
+                  <a class="dropdown-item bg-inverse" href="./sideorder.html" style="color:gray;">Side Order</a>
+                  <a class="dropdown-item bg-inverse" href="./beverage.html" style="color:gray;">Beverage</a>
+                </div>
+              </li>
+            </ul>
+
+          </div>
+        </nav>
+        -->
+
+        <div id="myNav" class="overlay">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+          <div class="overlay-content">
+              <a href="./home.html">Home</a>
+            <a href="./lunchspecial.html">Lunch Specials</a>
+            <a href="./appetizers.html">Appetizers</a>
+            <a href="./specialcombination.html">Special Combination</a>
+            <a href="./chefspecialties.html">Chef's Specialties</a>
+              <a href="./authenticchinese.html">Authentic Chinese</a>
+              <a href="./meatlovers.html">Meat Lovers</a>
+              <a href="./healthdiet.html">Vegetarian and Health Diet</a>
+              <a href="./riceandnoodles.html">Rice and Noodles</a>
+              <a href="./mooshi.html">Moo Shi</a>
+              <a href="./seafood.html">Seafood</a>
+              <a href="./sideorder.html">Side Order</a>
+              <a href="./beverage.html">Beverage</a>
+          </div>
+        </div>
+
+        <nav class="navbar fixed-top navbar-inverse bg-inverse">
+         <span onclick="openNav()" id="villageBar">&#9776;&nbsp Village Wok Menu</span>
+        </nav>
+
+
+        <div class="jumbotron jumbotron-fluid" id="jumbotron">
+          <div class="container" id="banner">
+            <h1 class="wiggle" style="padding-top:50px;" id="bannertextone">WELCOME TO VILLAGE WOK!</h1>
+            <p class="wiggle" style="padding-top:20px;" id="bannertexttwo">MSG-Free Restaurant</p>
+            <p class="wiggle" style="padding-top:40px;" id="bannertextthree">(334) 501-2996 / (334) 501-2995</p>
+          </div>
+        </div>
+
+
+<div id="menu">
+    <div class="container" id="firstSection">
+
+        <div id="menuLine" style="margin-top:90px;">
+              <div style="width: 100%; height: 30px; border-bottom: 1px solid orange; text-align: center">
+                  <span style="font-size: 30px; background-color: white; padding: 0  10px; color:orange;">
+                    &nbspMENU&nbsp <!--Padding is optional-->
+                  </span>
+                </div>
+             </div>
+
+<div class="card-deck">
+  <div class="card">
+    <a href="./lunchspecial.html">
+        <img class="card-img-top" src="villagewokimages/lunchspecial.jpeg" alt="Card image cap">
+    </a>
+    <div class="card-block">
+      <h4 class="card-title">Lunch Specials</h4>
+      <p class="card-text">Served with choice of soup or egg roll</p>
+      <p class="card-text">& fried or steamed rice</p>
+    </div>
+  </div>
+  <div class="card">
+    <a href="./appetizers.html">
+        <img class="card-img-top" src="villagewokimages/appetizersandsoup.jpeg" alt="Card image cap">
+    </a>
+    <div class="card-block">
+      <h4 class="card-title">Appetizers and Soup</h4>
+    </div>
+  </div>
+  <div class="card">
+    <a href="./specialcombination.html">
+     <img class="card-img-top" src="villagewokimages/specialcombination.jpeg" alt="Card image cap">
+    </a>
+    <div class="card-block">
+      <h4 class="card-title">Special Combination</h4>
+       <p class="card-text">Served with egg roll, egg drop soup</p>
+      <p class="card-text">No rice with Lo Mein order</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<div class="container-fluid" style="background-color:#F6F6F6; padding-top:10px; padding-bottom:10px;">
+<div class="container" id="secondSection">
+<div class="card-deck">
+  <div class="card card2and4row">
+    <a href="./chefspecialties.html">
+    <img class="card-img-top" src="villagewokimages/chefspecialties.jpeg" alt="Card image cap">
+    </a>
+    <div class="card-block">
+      <h4 class="card-title">Chef's Specialties</h4>
+      <p class="card-text">Served with rice</p>
+      <p class="card-text">No rice noodles order</p>
+    </div>
+  </div>
+  <div class="card card2and4row">
+    <a href="./authenticchinese.html">
+     <img class="card-img-top" src="villagewokimages/authenticchinese.jpeg" alt="Card image cap">
+    </a>
+    <div class="card-block">
+      <h4 class="card-title">Authentic Chinese</h4>
+      <p class="card-text">Served with steamed rice</p>
+    </div>
+  </div>
+  <div class="card card2and4row">
+    <a href="./meatlovers.html">
+        <img class="card-img-top" src="villagewokimages/meatlovers.jpeg" alt="Card image cap">
+    </a>
+    <div class="card-block">
+      <h4 class="card-title">Meat Lovers</h4>
+      <p class="card-text">Served with rice</p>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+
+<div class="container" id="thirdSection">
+<div class="card-deck">
+  <div class="card">
+    <a href="./healthdiet.html">
+      <img class="card-img-top" src="villagewokimages/vegetarianandhealth.jpeg" alt="Card image cap">
+    </a>
+    <div class="card-block">
+      <h4 class="card-title">Vegetarian and Health Diet</h4>
+      <p class="card-text">Served with rice</p>
+    </div>
+  </div>
+  <div class="card">
+    <a href="./riceandnoodles.html">
+      <img class="card-img-top" src="villagewokimages/riceandnoodles.jpeg" alt="Card image cap">
+    </a>
+    <div class="card-block">
+      <h4 class="card-title">Rice and Noodles</h4>
+
+    </div>
+  </div>
+  <div class="card">
+    <a href="./mooshi.html">
+     <img class="card-img-top" src="villagewokimages/mooshi.jpeg" alt="Card image cap">
+    </a>
+    <div class="card-block">
+      <h4 class="card-title">Moo Shi</h4>
+      <p class="card-text">Moo Shi served 4 pancakes</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="container-fluid" style="background-color:#F6F6F6; padding-top:10px; padding-bottom:10px;">
+<div class="container" id="fourSection">
+<div class="card-deck">
+  <div class="card card2and4row">
+    <a href="./seafood.html">
+      <img class="card-img-top" src="villagewokimages/seafood.jpeg" alt="Card image cap">
+    </a>
+    <div class="card-block">
+      <h4 class="card-title">Seafood</h4>
+      <p class="card-text">Served with rice</p>
+    </div>
+  </div>
+  <div class="card card2and4row">
+    <a href="./sideorder.html">
+      <img class="card-img-top" src="villagewokimages/sideorder.jpeg" alt="Card image cap">
+    </a>
+    <div class="card-block">
+      <h4 class="card-title">Side Order</h4>
+    </div>
+  </div>
+  <div class="card card2and4row">
+    <a href="./beverage.html">
+      <img class="card-img-top" src="villagewokimages/beverage.jpeg" alt="Card image cap">
+    </a>
+    <div class="card-block">
+      <h4 class="card-title">Beverage</h4>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+</div>
+
+
+<div class="container" id="about">
+<div class="container" id="bigimgsection">
+        <div id="aboutUsLine" style="margin-top:90px;">
+                      <div style="width: 100%; height: 30px; border-bottom: 1px solid orange; text-align: center">
+                          <span style="font-size: 30px; background-color: white; padding: 0  10px; color:orange;">
+                            &nbspABOUT US&nbsp <!--Padding is optional-->
+                          </span>
+                        </div>
+                     </div>
+      <img src="villagewokimages/aboutus.jpeg" class="img-fluid" alt="About Us Image" style="margin-top:120px;">
+                    <h4 style="margin-top:40px;">A Taste of Gourmet History</h4>
+                    <p style="margin-top:20px;color:gray;">Village Wok Chinese Restaurant opened on August 20, 2007 the commitment of serving authentic Chinese food in a comfortable atmosphere. Here at Village Wok, we are so passionate about providing authentic taste, fresh materials and creative menus. We love to hear that people enjoy the food and the friendly service, but the thing we love most is to make friends here. We are sincerely grateful about people who have been supportive since our opening—those who eat here, those who give us valuable advice and those who spread the word-of-mouth and attract new people to us. We are dedicated to continue providing our customers the best food and service in Auburn.</p>
+
+    </div>
+    <div class="container" id="buffetimgsection">
+        <div class="container" style="margin-top:60px;">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12" style="margin-top:40px;"><img src="villagewokimages/buffet.jpeg" class="img-fluid" alt="Buffet Image">
+                            <h4 style="margin-top:40px;">Sunday Lunch Buffet</h4>
+                            <div id="sundayLine" style="margin-top:20px;">
+                                <p style="color:gray">$6.49 per person</p>
+                                <p style="color:gray">11:00am - 3:00pm</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12" style="margin-top:40px;"><img src="villagewokimages/deliver.jpeg" class="img-fluid"  alt="Deliver Image">
+                            <h4 style="margin-top:40px;">We Deliver!</h4>
+                            <div id="deliverLine" style="margin-top:20px;">
+                                <p style="color:gray">(Minimum $10.00) + Tax + Deliver Fee</p>
+                                <p style="color:gray">Auburn only</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </div>
+</div>
+
+<div class="container-fluid" id="contact">
+
+      <div class="container">
+           <div id="contactUsLine" style="padding-top:90px;">
+                <div style="width: 100%; height: 30px; border-bottom: 1px solid orange; text-align: center">
+                    <span style="font-size: 30px; background-color: #F6F6F6; padding: 0  10px;color:orange;">
+                     &nbspCONTACT US&nbsp <!--Padding is optional-->
+                    </span>
+                </div>
+            </div>
+            <h4 style="margin-top:50px;">Better Yet, See Us In Person!</h4>
+            <p style="color:gray">We love our customers, so feel free to visit during normal business hours.<br> Chinese food in Auburn. Call us today to make a reservation or carry-out/<br> delivery. </p>
+            <h4 style="margin-top:50px;">Auburn Village Wok</h4>
+            <p style="color:gray">1100 South College Street #104, Auburn, AL 36832, US<br>(334) 501-2996 / (334) 501-2995</p>
+            <h4 style="margin-top:50px;">Hours (Open 6 Days)</h4>
+            <p style="color:gray">Monday - Friday: 10:30am - 9:30pm<br>Saturday: Closed<br>Sunday: 11:00am - 9:30pm</p>
+
+            <h4 style="margin-top:50px;">Follow Us On Social Media</h4>
+
+	<div class="socalIcon" style="margin-top:15px;"><a id="facebook" href="#"><img src="villagewokimages/facebookIcon.jpg"></a><a id="instagram" href="https://www.instagram.com/auburnvillagewok/"><img src="villagewokimages/instagram.jpg"></a><a id="twitter" href="https://twitter.com/VillageWok"><img src="villagewokimages/twitter.jpg"></a><a id="pintertest" href="https://www.pinterest.com/auburnvillagewok/"><img src="villagewokimages/pintertest.jpg"></a></div>
+
+          <div id="emailButton" style="margin-top:90px; padding-bottom: 150px;">
+          <a href="./contact.php" class="btn btn-primary btn-lg"><i class="fa fa-envelope" aria-hidden="true"></i><span id="email" style="margin-left:20px;">DROP US A LINE!</span></a>
+          </div>
+        </div>
+
+
+
+</div>
+
+
+    <!--   <div id="map-canvas"></div>  hide for now -->
+
+<footer class="footer" style="background-color: #292B2C; height: 50px;">
+      <div class="container">
+        <span class="text-muted"><small style="color:white;">Copyright 2017 Village Wok. All Rights Reserved.</small></span>
+      </div>
+</footer>
+
+
+
+
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+
+      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnycWatbGyK6ldFqErjFtko1yeMclNUOA&amp;sensor=true"></script>
+
+
+      <script type="text/javascript">
+
+      	   function openNav() {
+                document.getElementById("myNav").style.width = "100%";
+            }
+
+            function closeNav() {
+                document.getElementById("myNav").style.width = "0%";
+            }
+
+
+           // When the user scrolls down 20px from the top of the document, show the button
+            window.onscroll = function() {scrollFunction()};
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    document.getElementById("myBtn").style.display = "block";
+                } else {
+                    document.getElementById("myBtn").style.display = "none";
+                }
+            }
+
+            // When the user clicks on the button, scroll to the top of the document
+            function topFunction() {
+                document.body.scrollTop = 0; // For Chrome, Safari and Opera
+                document.documentElement.scrollTop = 0; // For IE and Firefox
+            }
+
+
+
+          function initialize() {
+            var mapOptions = {
+                center: new google.maps.LatLng(32.5850293, -85.5604129),
+                zoom: 13,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                scrollwheel: false,
+                draggable: false,
+                panControl: true,
+                zoomControl: true,
+                mapTypeControl: true,
+                scaleControl: true,
+                streetViewControl: true,
+                overviewMapControl: true,
+                rotateControl: true,
+            };
+              var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+            var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(32.5850293, -85.5604129),
+            map: map,
+
+        });
+
+
+        }
+          google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+      </script>
+
+
+  </body>
+
+</html>

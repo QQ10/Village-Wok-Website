@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <title>Health Diet/ Vegetarian</title>
+
+
+      <style type="text/css">
+
+          .content{
+
+              font-size: 130%;
+              padding-bottom: 45px;
+
+          }
+
+            #bottomGrayLine{
+
+              text-align: center;
+              color: gray;
+              font-size: 80%;
+              margin-top: 60px;
+              margin-bottom: 60px;
+          }
+
+       	 #myBtn {
+
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed/sticky position */
+            bottom: 20px; /* Place the button at the bottom of the page */
+            right: 15px; /* Place the button 20px from the right */
+            z-index: 99; /* Make sure it does not overlap */
+            border: none; /* Remove borders */
+            outline: none; /* Remove outline */
+            background-color: gray; /* Set a background color */
+            color: white; /* Text color */
+            cursor: pointer; /* Add a mouse pointer on hover */
+            padding: 10px; /* Some padding */
+            border-radius: 10px; /* Rounded corners */
+
+        }
+
+         #myBtn:hover {
+
+            background-color: #555; /* Add a dark-grey background on hover */
+
+       }
+
+       body {
+            margin: 0;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .overlay {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0, 0.9);
+            overflow-x: hidden;
+            transition: 0.5s;
+        }
+
+        .overlay-content {
+            position: relative;
+            top: 12%;
+            width: 100%;
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 35px;
+        }
+
+        .overlay a {
+            padding: 8px;
+            text-decoration: none;
+            font-size: 22px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .overlay a:hover, .overlay a:focus {
+            color: #f1f1f1;
+        }
+
+        .overlay .closebtn {
+            position: absolute;
+            top: 40px;
+            right: 25px;
+            font-size: 50px;
+        }
+
+        @media screen and (max-height: 450px) {
+          .overlay a {font-size: 20px}
+          .overlay .closebtn {
+            font-size: 40px;
+            top: 15px;
+            right: 35px;
+          }
+        }
+
+        #villageBar{
+
+         color: white;
+         height: 40px;
+         padding-top: 7px;
+         font-size: 19px;
+         cursor:pointer;
+
+        }
+
+
+
+      </style>
+
+
+
+
+
+  </head>
+
+  <body>
+
+      <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+      <!--
+      <nav class="navbar navbar-toggleable-md navbar navbar-inverse bg-inverse fixed-top">
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a class="navbar-brand" href="./home.html">Village Wok</a>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+            <ul class="navbar-nav" id=menu>
+              <li class="nav-item">
+                <a class="nav-link" href="./home.html">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./lunchspecial.html">Lunch Specials</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./appetizers.html">Appetizers</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  More
+                </a>
+                <div class="dropdown-menu bg-inverse" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item bg-inverse" href="./specialcombination.html" style="color:gray;">Special Combination</a>
+                  <a class="dropdown-item bg-inverse" href="./chefspecialties.html" style="color:gray;">Chef's Specialties</a>
+                  <a class="dropdown-item bg-inverse" href="./authenticchinese.html" style="color:gray;">Authentic Chinese</a>
+                  <a class="dropdown-item bg-inverse" href="./meatlovers.html" style="color:gray;">Meat Lovers</a>
+                  <a class="dropdown-item bg-inverse" href="./healthdiet.html" style="color:gray;">Vegetarian and Health Diet</a>
+                  <a class="dropdown-item bg-inverse" href="./riceandnoodles.html" style="color:gray;">Rice and Noodles</a>
+                  <a class="dropdown-item bg-inverse" href="./mooshi.html" style="color:gray;">Moo Shi</a>
+                  <a class="dropdown-item bg-inverse" href="./seafood.html" style="color:gray;">Seafood</a>
+                  <a class="dropdown-item bg-inverse" href="./sideorder.html" style="color:gray;">Side Order</a>
+                  <a class="dropdown-item bg-inverse" href="./beverage.html" style="color:gray;">Beverage</a>
+                </div>
+              </li>
+            </ul>
+
+          </div>
+        </nav>
+        -->
+
+        <div id="myNav" class="overlay">
+          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+          <div class="overlay-content">
+              <a href="./home.html">Home</a>
+            <a href="./lunchspecial.html">Lunch Specials</a>
+            <a href="./appetizers.html">Appetizers</a>
+            <a href="./specialcombination.html">Special Combination</a>
+            <a href="./chefspecialties.html">Chef's Specialties</a>
+              <a href="./authenticchinese.html">Authentic Chinese</a>
+              <a href="./meatlovers.html">Meat Lovers</a>
+              <a href="./healthdiet.html">Vegetarian and Health Diet</a>
+              <a href="./riceandnoodles.html">Rice and Noodles</a>
+              <a href="./mooshi.html">Moo Shi</a>
+              <a href="./seafood.html">Seafood</a>
+              <a href="./sideorder.html">Side Order</a>
+              <a href="./beverage.html">Beverage</a>
+          </div>
+        </div>
+
+        <nav class="navbar fixed-top navbar-inverse bg-inverse">
+         <span onclick="openNav()" id="villageBar">&#9776;&nbsp Village Wok Menu</span>
+        </nav>
+
+
+<div class="container">
+
+        <div id="healthLine" style="margin-top:135px; margin-bottom:110px;">
+              <div style="width: 100%; height: 30px; border-bottom: 1px solid orange; text-align: center">
+                  <span style="font-size: 30px; background-color: white; padding: 0  10px; color:orange;">
+                    &nbspHEALTH DIET AND VEGETARIAN&nbsp <!--Padding is optional-->
+                  </span>
+                </div>
+             </div>
+
+
+           <div class="container" style="margin-top:60px; text-align: left;">
+
+
+                    <div class="row">
+                        <div class="col-md-6 offset-md-3"><h3 style="color:orange">Health & Diet Menu</h3></div>
+
+                        <div class="col-md-6 offset-md-3" style="margin-bottom:15px;"><small style="color:gray;">Served with rice and brown sauce</small></div>
+
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="col-md-3 offset-md-3 content">1. Mixed Vegetables</div>
+                        <div class="col-md-3 offset-md-3 content">7.99</div>
+                        <div class="col-md-3 offset-md-3 content">2. Bean Curd w. Vegetables</div>
+                        <div class="col-md-3 offset-md-3 content">8.99</div>
+                         <div class="col-md-3 offset-md-3 content">3. Chicken w. Vegetables</div>
+                        <div class="col-md-3 offset-md-3 content">8.99</div>
+                         <div class="col-md-3 offset-md-3 content">4. Shrimp w. Vegetables</div>
+                        <div class="col-md-3 offset-md-3 content">9.95</div>
+                         <div class="col-md-3 offset-md-3 content">5. Shrimp & Chicken w. Vegetables</div>
+                        <div class="col-md-3 offset-md-3 content">10.50</div>
+
+                    </div>
+               <hr style="width:75%; margin-bottom:50px;">
+
+                    <div class="row">
+                        <div class="col-md-6 offset-md-3"><h3 style="color:orange">Vegetarian</h3></div>
+
+                        <div class="col-md-6 offset-md-3" style="margin-bottom:15px;"><small style="color:gray;">Served with rice</small></div>
+
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="col-md-3 offset-md-3 content">1. Vegetable Delight</div>
+                        <div class="col-md-3 offset-md-3 content">7.99</div>
+                        <div class="col-md-3 offset-md-3 content">2. Potato Vegetable</div>
+                        <div class="col-md-3 offset-md-3 content">7.99</div>
+                         <div class="col-md-3 offset-md-3 content">3. Broccoli w. Oyster Sauce</div>
+                        <div class="col-md-3 offset-md-3 content">7.99</div>
+                         <div class="col-md-3 offset-md-3 content">4. Sautéed Green Beans</div>
+                        <div class="col-md-3 offset-md-3 content">13.76</div>
+                         <div class="col-md-3 offset-md-3 content">5. Yu- Hsiang Vegetables 🌶️</div>
+                        <div class="col-md-3 offset-md-3 content">7.99</div>
+                         <div class="col-md-3 offset-md-3 content">6. Yu- Hsiang Eggplant 🌶️</div>
+                        <div class="col-md-3 offset-md-3 content">13.76</div>
+
+                    </div>
+               <hr style="width:75%; margin-bottom:50px;">
+
+                    <div class="row">
+                        <div class="col-md-6 offset-md-3"><h3 style="color:orange">Tofu</h3></div>
+
+                        <div class="col-md-6 offset-md-3" style="margin-bottom:15px;"><small style="color:gray;">Served with rice</small></div>
+
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="col-md-3 offset-md-3 content">1. Sesame Tofu</div>
+                        <div class="col-md-3 offset-md-3 content">8.99</div>
+                        <div class="col-md-3 offset-md-3 content">2. General Tso's Tofu</div>
+                        <div class="col-md-3 offset-md-3 content">8.99</div>
+                         <div class="col-md-3 offset-md-3 content">3. Honey Tofu</div>
+                        <div class="col-md-3 offset-md-3 content">8.99</div>
+                         <div class="col-md-3 offset-md-3 content">4. Potato Tofu</div>
+                        <div class="col-md-3 offset-md-3 content">8.99</div>
+                         <div class="col-md-3 offset-md-3 content">5. Family Style Tofu</div>
+                        <div class="col-md-3 offset-md-3 content">8.99</div>
+                         <div class="col-md-3 offset-md-3 content">6. Ma Po Tofu 🌶️</div>
+                        <div class="col-md-3 offset-md-3 content">8.99</div>
+                        <div class="col-md-3 offset-md-3 content">7. Curry Tofu 🌶️</div>
+                        <div class="col-md-3 offset-md-3 content">8.99</div>
+                        <div class="col-md-3 offset-md-3 content">8. Tofu w. Garlic Sauce 🌶️</div>
+                        <div class="col-md-3 offset-md-3 content">8.99</div>
+                         <div class="col-md-3 offset-md-3 content">9. Kung Pao Tofu 🌶️</div>
+                        <div class="col-md-3 offset-md-3 content">8.99</div>
+
+                    </div>
+
+
+                </div>
+
+    <div id="bottomGrayLine">🌶️ WE CAN ALTER THE SPICY ACCORDING TO YOUR TASTE.</div>
+</div>
+
+<footer class="footer" style="background-color: #292B2C; height: 50px;">
+      <div class="container">
+        <span class="text-muted"><small style="color:white;">Copyright 2017 Village Wok. All Rights Reserved.</small></span>
+      </div>
+</footer>
+
+
+
+
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+
+       <script type="text/javascript">
+
+       function openNav() {
+                document.getElementById("myNav").style.width = "100%";
+            }
+
+            function closeNav() {
+                document.getElementById("myNav").style.width = "0%";
+            }
+
+       // When the user scrolls down 20px from the top of the document, show the button
+            window.onscroll = function() {scrollFunction()};
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    document.getElementById("myBtn").style.display = "block";
+                } else {
+                    document.getElementById("myBtn").style.display = "none";
+                }
+            }
+
+            // When the user clicks on the button, scroll to the top of the document
+            function topFunction() {
+                document.body.scrollTop = 0; // For Chrome, Safari and Opera
+                document.documentElement.scrollTop = 0; // For IE and Firefox
+            }
+
+      </script>
+
+
+  </body>
+
+</html>
